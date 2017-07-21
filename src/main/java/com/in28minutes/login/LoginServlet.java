@@ -39,8 +39,9 @@ public class LoginServlet extends HttpServlet{
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		if(userValidationService.isUserValid(name,password)){
-			//request.setAttribute("name",name);
+			
 			//request.setAttribute("todos",todoService.retrieveTodos());
+			request.getSession().setAttribute("name",name);
 			response.sendRedirect("/todo.do");
 		}else{
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);

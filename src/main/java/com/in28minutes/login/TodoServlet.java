@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.in28minutes.todo.TodoService;
 
 @WebServlet("/todo.do")
-public class TodoServlet extends HttpServlet{
+public class TodoServlet extends HttpServlet {
+
+		private TodoService todoService = new TodoService();
 	
-	private TodoService todoService = new TodoService();
+		protected void doGet(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
 	
-	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
-	 {
-		request.setAttribute("todos",todoService.retrieveTodos());
-		request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request,response);
-	 }
+			request.setAttribute("todos", todoService.retrieveTodos());
+			request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);
+		}
+
 }
