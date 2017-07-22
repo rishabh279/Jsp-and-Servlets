@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet{
 			
 			//request.setAttribute("todos",todoService.retrieveTodos());
 			request.getSession().setAttribute("name",name);
-			response.sendRedirect("/todo.do");
+			response.sendRedirect("/list-todos.do");
 		}else{
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
 		}

@@ -17,9 +17,15 @@ public class AddTodoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String newTodo = request.getParameter("newTodo");
-		todoService.addTodos(newTodo);
-		//request.getRequestDispatcher("/todo.do").forward(request,response);
-		response.sendRedirect("/todo.do");
+		String category = request.getParameter("category");
+		todoService.addTodos(newTodo,category);
+		//request.getRequestDispatcher("/list-todos.do").forward(request,response);
+		response.sendRedirect("/list-todos.do");
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/views/add-todos.jsp").forward(request,response);
 	}
 
 }

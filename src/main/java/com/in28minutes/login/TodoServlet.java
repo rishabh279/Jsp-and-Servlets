@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.in28minutes.todo.TodoService;
 
-@WebServlet("/todo.do")
+@WebServlet("/list-todos.do")
 public class TodoServlet extends HttpServlet {
 
 		private TodoService todoService = new TodoService();
@@ -19,7 +19,7 @@ public class TodoServlet extends HttpServlet {
 				throws ServletException, IOException {
 	
 			request.setAttribute("todos", todoService.retrieveTodos());
-			request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/list-todos.jsp").forward(request, response);
 		}
 
 }
